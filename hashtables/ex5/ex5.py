@@ -1,12 +1,20 @@
-# Your code here
-
-
 
 def finder(files, queries):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    table = {}
+
+    for path in files:
+        parts = path.split("/")
+        
+        if table.get(parts[-1]):
+            table[parts[-1]].append(path)
+        else:
+            table[parts[-1]] = [path]
+
+    result = []
+
+    for val in queries:
+        if table.get(val):
+            result.extend(table.get(val))
 
     return result
 
